@@ -51,6 +51,20 @@ var employees = [
 */
 
 //Code Here
+function employeeUpdater() {
+  
+  for(let i = 0; i < employees.length; i++) {
+    let obj = employees[i];
+    for (let key in obj) {
+      if(obj[key] === "Theo") {
+        employees.splice(i, 1);
+     } else if (obj[key] === "Lorie") {
+       obj['department'] = 'HR';
+    }
+  }
+}
+return employees;
+}
 
 
 
@@ -69,7 +83,16 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 */
 
 //Code Here
-
+function removeDuplicates(arr){
+  for(let i = arr.length-1; i>=0 ; i--) {
+    for(let x = 0; x<arr.length; x++) {
+      if (arr[i] === arr[x] && x !== i) {
+        arr.splice(i,1);
+      }
+    }
+  }
+  return arr;
+}
 
 
 ////////// PROBLEM 3 //////////
@@ -97,8 +120,8 @@ var cat = {
 */
 
 //Code Here
-var grumpyActivity;
-var fluffy2ndFriend;
+var grumpyActivity = cat.catFriends[0]['activities'][1];
+var fluffy2ndFriend = cat.catFriends[1]['name'];
 
 
 
@@ -133,12 +156,23 @@ var myCar = {
   Above is some information about my car. As you can see, I am not the best driver.
   I have caused a few accidents.
   Please update this driving record so that I can feel better about my driving skills.
+
     1. Write a function called recordCleaner.
     2. Loop over the accidents array.
     3. Change atFaultForAccident from true to false.
 */
 
-//Code Here
+function recordCleaner(myCar) {
+  for (let key in myCar) {
+    if (key === 'accidents') {
+      accidents['atFaultForAccident'] = false;
+    }
+  }
+  return myCar;
+}
+recordCleaner();
+console.log(myCar['accidents']);
+  
 
 
 
@@ -158,5 +192,17 @@ var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
 */
 
 //Code Here
+function looper(arr) {
+  for (let i = 0; i<arr.length; i++) {
+    for (let x = 0; x < arr[i].length; x++) { 
+      if (x % 2 !== 0) {
+        arr[i][x] = 'even';
+      } else {
+        arr[i][x] = 'odd';
+      }
+    }
+  }
+  return arr;
+}
 
-
+looper(numsArr);
